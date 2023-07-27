@@ -1,0 +1,18 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.Navbar {
+
+}
+
+.Main {
+  flex-grow: 1;
+}
+
+.Footer {
+  margin-left: auto;
+  margin-right: auto;
+}
