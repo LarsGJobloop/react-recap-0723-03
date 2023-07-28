@@ -1,35 +1,32 @@
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  NavLink
+} from 'react-router-dom'
+
+import { UserContextProvider } from './hooks/UserContext'
+
+import './index.css'
 import './App.css'
-import { useUserContext, UserContextProvider } from './hooks/UserContext'
+import {ProductBrowser} from "./pages/ProductBrowser"
+import {Cart} from "./pages/cart/Cart"
 
 function App() {
   return (
     <UserContextProvider>
-      <header>
-        <h1>React Context</h1>
+      <Router>
+        <Routes>
 
-        <UserInfo />
-      </header>
+          <Route path='/' element={<ProductBrowser />} />
+          <Route path='/cart' element={<Cart />} />
+
+        </Routes>
+      </Router>
     </UserContextProvider>
   )
 }
 
-function UserInfo() {
-  const {user, isLoggedIn, signIn, signOut} = useUserContext()
-
-  return (
-    <div>
-      {
-        isLoggedIn
-        ? <h2>{user.name}</h2>
-        : <h2>Not logged in</h2>
-      }
-      {
-        isLoggedIn
-        ? <button onClick={signOut}>Sign Out</button>
-        : <button onClick={signIn}>Sign In</button>
-      }
-    </div>
-  )
-}
 
 export default App
